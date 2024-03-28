@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Demo with Online jQuery</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- 使用在线托管的 jQuery -->
+    <script>
+        // 在页面加载完毕后执行的 jQuery 代码
+        $(document).ready(function(){
+            $.ajax({
+                url:"http://127.0.0.1:8000",
+                success:function(data){
+                    console.log("ajax success")
+                    for(let value of data){
+
+                        $("table").append("<tr>\n" +
+                        "<td>"+value.name+"</td>\n" +
+                        "<td>"+value.age+"</td>\n" +
+                        "<td>"+value.city+"</td>\n" +
+                        "</tr>")
+                    }
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>Welcome to My Webpage!</h1>
+
+    <p>This is a simple demonstration of HTML with online jQuery.</p>
+    <table>
+        <tr>
+            <td>a</td>
+            <td>b</td>
+            <td>c </td>
+        </tr>
+    </table>
+
+</body>
+</html>

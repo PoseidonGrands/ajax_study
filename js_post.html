@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- 使用在线托管的 jQuery -->
+    <title>Login Form</title>
+</head>
+<script>
+    //ajax提交表单数据的方式
+    // 1、使用事件监听
+    function checkForm(){
+    $("#login_form").submit()
+    }
+
+    // 2、jquery监听
+    $(document).ready(function(){
+//        $("#login_form").click(function(){
+//            $("#login_form").submit()
+//        })
+
+        //3、ajax提交
+        $.ajax({
+            type: "post",
+            url: "http://127.0.0.1:8000",
+            data: $("login_form").serialize(),
+            success: function(data){
+                console.log(data)
+            }
+        })
+    })
+</script>
+<body>
+    <h2>Login Form</h2>
+    <form id="login_form" action="http://127.0.0.1:8000" method="GET">
+        <label for="username">Username:</label><br>
+        <input type="text" id="username" name="username"><br><br>
+
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password"><br><br>
+
+<!--        <input type="button" onclick="checkForm();" value="Login">-->
+        <input type="button" value="Login">
+    </form>
+</body>
+</html>
